@@ -7,6 +7,9 @@ The screenshot will look something like this when shared on social media:
 
 ![Screenshot](https://raw.githubusercontent.com/lassebunk/screenshot-generator/master/screenshot-1.png)
 
+*Why?* When developing [Toptrust](http://toptrust.dk), I was tired of manually adding images of posts
+when sharing on social media. This was especially true for pages that had no featured/thumbnail images.
+
 ## Installation
 
 1. Download the plugin to `wp-content/plugins`.
