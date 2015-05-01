@@ -105,9 +105,9 @@ function scrgen_settings_init(  ) {
   );
 
   add_settings_field( 
-    'scrgen_enable_social', 
+    'scrgen_social_strategy', 
     __( 'Enable social screenshots', 'scrgen' ), 
-    'scrgen_enable_social_render', 
+    'scrgen_social_strategy_render', 
     'scrgen-settings', 
     'scrgen_social_section' 
   );
@@ -175,28 +175,28 @@ function scrgen_crop_height_render(  ) {
 }
 
 
-function scrgen_enable_social_render(  ) { 
+function scrgen_social_strategy_render(  ) { 
   ?>
   <label>
-    <input type='radio' name='scrgen_social_strategy' <?php checked(scrgen_setting('social_strategy'), 'missing'); ?> value='missing'>
-    Add screenshots to social media when no post thumbnail / featured image is available.
+    <input type='radio' name='scrgen_social_strategy' <?php checked(scrgen_setting('social_strategy'), 'always'); ?> value='always'>
+    Always add screenshots for social media.
   </label>
   <br />
   <label>
-    <input type='radio' name='scrgen_social_strategy' <?php checked(scrgen_setting('social_strategy'), 'always'); ?> value='always'>
-    Always add screenshots to social media.
+    <input type='radio' name='scrgen_social_strategy' <?php checked(scrgen_setting('social_strategy'), 'missing'); ?> value='missing'>
+    Add screenshots for social media when no featured image is available.
   </label>
   <br />
   <label>
     <input type='radio' name='scrgen_social_strategy' <?php checked(scrgen_setting('social_strategy'), ''); ?> value=''>
-    Never add screenshots to social media.
+    Never add screenshots for social media.
   </label>
   <?php
 }
 
 
 function scrgen_social_section() {
-  echo __( 'Screenshot Generator can add <code>og:image</code> and <code>twitter:image:src</code> meta tags if a post thumbnail doesn\'t exist.', 'scrgen' );
+  echo __( '<code>og:image</code> and <code>twitter:image:src</code> can be added automatically to the HTML <code>&lt;head&gt;</code>.', 'scrgen' );
 }
 
 
