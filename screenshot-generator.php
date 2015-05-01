@@ -18,7 +18,7 @@ function scrgen_defaults() {
     'crop_top'        => 0,
     'crop_width'      => 1024,
     'crop_height'     => 768,
-    'social_strategy' => 'missing'
+    'social_strategy' => 'always'
   );
 }
 
