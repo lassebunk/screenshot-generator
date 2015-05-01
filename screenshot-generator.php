@@ -9,6 +9,23 @@
  * License: MIT
  */
 
+function scrgen_defaults() {
+  return array(
+    'width'           => '1024',
+    'height'          => '768',
+    'enable_cropping' => 1,
+    'crop_left'       => 0,
+    'crop_top'        => 0,
+    'crop_width'      => 1024,
+    'crop_height'     => 768,
+    'social_strategy' => 'missing'
+  );
+}
+
+function scrgen_setting($key) {
+  return get_option("scrgen_{$key}", scrgen_defaults()[$key]);
+}
+
 function scrgen_generate_post_screenshot($post_id) {
   // Workaround bug: http://premium.wpmudev.org/forums/topic/snapshot-faltal-error-on-get_home_path
   if (!function_exists('get_home_path' )) require_once( dirname(__FILE__) . '/../../../wp-admin/includes/file.php' );
@@ -30,10 +47,13 @@ function scrgen_generate_post_screenshot($post_id) {
   $job_path = "/tmp/{$job_id}.js";
   $tmp_path = "/tmp/{$job_id}.jpg";
 
-  $w = 1024;
-  $h = 768;
-  $clipw = 1024;
-  $cliph = 640;
+  $width           = scrgen_setting('width');
+  $height          = scrgen_setting('height');
+  $enable_cropping = scrgen_setting('enable_cropping');
+  $crop_left       = scrgen_setting('crop_left');
+  $crop_top        = scrgen_setting('crop_top');
+  $crop_width      = scrgen_setting('crop_width');
+  $crop_height     = scrgen_setting('crop_height');
 
   $url = strip_tags($url);
   $url = str_replace(';', '', $url);
@@ -48,12 +68,12 @@ function scrgen_generate_post_screenshot($post_id) {
 
   var page = require('webpage').create();
 
-  page.viewportSize = { width: {$w}, height: {$h} };
+  page.viewportSize = { width: {$width}, height: {$height} };
 
   ";
 
-  if (isset($clipw) && isset($cliph)) {
-      $src .= "page.clipRect = { top: 0, left: 0, width: {$clipw}, height: {$cliph} };";
+  if ($enable_cropping) {
+      $src .= "page.clipRect = { top: {$crop_top}, left: {$crop_left}, width: {$crop_width}, height: {$crop_height} };";
   }
 
   $src .= "
@@ -112,17 +132,29 @@ function scrgen_screenshot_if_needed() {
   }
 }
 
-function scrgen_opengraph($original) {
-  $screenshot = scrgen_screenshot_if_needed();
+function scrgen_opengraph() {
+  $screenshot = scrgen_screenshot();
   if (!empty($screenshot)) {
     echo '<meta property="og:image" content="' . $screenshot . '" />';
   }
 }
 
 function scrgen_twitter() {
-  $screenshot = scrgen_screenshot_if_needed();
+  $screenshot = scrgen_screenshot();
   if (!empty($screenshot)) {
     echo '<meta name="twitter:image:src" content="' . $screenshot . '"/>';
+  }
+}
+
+function scrgen_head() {
+  $strategy = scrgen_setting('social_strategy');
+  if ($strategy == '') return;
+
+  $thumbnail_id = get_post_thumbnail_id();
+
+  if ($strategy == 'always' || ($strategy == 'missing' && empty($thumbnail_id))) {
+    scrgen_opengraph();
+    scrgen_twitter();
   }
 }
 
@@ -130,5 +162,8 @@ add_action('scrgen_update_post_screenshot', 'scrgen_generate_post_screenshot');
 add_action('scrgen_post_screenshot_generated', 'scrgen_update_post_meta', 10, 2);
 add_action('post_updated', 'scrgen_queue_post_update');
 
-add_action('wp_head', 'scrgen_opengraph', 1);
-add_action('wp_head', 'scrgen_twitter', 1);
+add_action('wp_head', 'scrgen_head', 1);
+
+if (is_admin()) {
+  require_once(dirname(__FILE__) . '/admin.php');
+}
