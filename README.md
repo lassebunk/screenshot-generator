@@ -6,7 +6,7 @@ It uses [PhantomJS](http://phantomjs.org/) to do this.
 
 The screenshot will look something like this when shared on social media:
 
-![Screenshot]()
+![Screenshot](https://raw.githubusercontent.com/lassebunk/screenshot-generator/master/screenshot-1.png)
 
 ## Installation
 
