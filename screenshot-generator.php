@@ -114,6 +114,5 @@ add_action('scrgen_update_post_screenshot', 'scrgen_generate_post_screenshot');
 add_action('scrgen_post_screenshot_generated', 'scrgen_update_post_meta', 10, 2);
 add_action('post_updated', 'scrgen_queue_post_update');
 
-// Automatically add screenshots when using Yoast's SEO plugin
 add_action('wp_head', 'scrgen_opengraph', 1);
 add_action('wp_head', 'scrgen_twitter', 1);
