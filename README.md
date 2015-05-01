@@ -20,7 +20,7 @@ when sharing on social media. This was especially true for pages that had no fea
      brew install phantomjs
      ```
 
-     Or if this fails, [download from here](https://github.com/eugene1g/phantomjs/releases)
+     Or if this fails, [download from here](https://github.com/eugene1g/phantomjs/releases).
 
    * **Linux:**
 
