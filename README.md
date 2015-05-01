@@ -1,6 +1,6 @@
 # <img src="https://raw.githubusercontent.com/lassebunk/screenshot-generator/master/img/wordpress-logo.png" width="36" height="36" /> Screenshot Generator
 
-Screenshot Generator is a WordPress plugin that takes screenshots posts for social media etc. when they are updated.
+Screenshot Generator is a WordPress plugin that takes screenshots of posts for social media etc. when they are updated.
 It uses [PhantomJS](http://phantomjs.org/) to do this.
 
 The screenshot will look something like this when shared on social media:
