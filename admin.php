@@ -224,8 +224,8 @@ function scrgen_options_page() {
       The PhantomJS binary (<code>phantomjs</code>) could not be found. Screenshot Generator uses PhantomJS to generate screenshots.<br />
       Please see the <a href="https://github.com/lassebunk/screenshot-generator#installation" target="_blank">installation instructions</a> for information on how to fix this.
     </div>
-    <? } ?>
-    
+    <?php } ?>
+   
     <?php
     settings_fields( 'scrgen-settings' );
     do_settings_sections( 'scrgen-settings' );
