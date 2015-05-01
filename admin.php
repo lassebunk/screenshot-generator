@@ -215,7 +215,7 @@ function scrgen_options_page(  ) {
     <h2>Screenshot Generator</h2>
 
     <p>
-      Screenshot Generator takes automatic screenshots from posts when they are updated.<br />
+      Screenshot Generator takes automatic screenshots of posts when they are updated.<br />
       These are saved to <code>wp-content/screenshots</code>.
     </p>
 
