@@ -1,4 +1,4 @@
-# Screenshot Generator
+# <img src="https://raw.githubusercontent.com/lassebunk/screenshot-generator/master/img/wordpress-logo.png" width="36" height="36" /> Screenshot Generator
 Contributors: lassebunk
 Tags: screenshot, screendump, phantomjs, social, preview
 Requires at least: 4.0.0
