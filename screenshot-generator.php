@@ -5,7 +5,7 @@
  * Description: Take automatic screenshots of posts when they are updated.
  * Version: 0.0.1
  * Author: Lasse Bunk
- * Author URI: http://lassebunk.dk
+ * Author URI: https://github.com/lassebunk
  * License: MIT
  */
 
