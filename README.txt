@@ -1,9 +1,18 @@
-# <img src="https://raw.githubusercontent.com/lassebunk/screenshot-generator/master/img/wordpress-logo.png" width="36" height="36" /> Screenshot Generator
+# Screenshot Generator
+Contributors: lassebunk
+Tags: screenshot, screendump, phantomjs, social, preview
+Requires at least: 4.0.0
+Tested up to: 4.1.1
+Stable tag: 0.1.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Screenshot Generator takes screenshots of posts and pages when they are updated. These screenshots can be used for e.g. previews in social media.
+
+## Description
 
 Screenshot Generator is a WordPress plugin that takes screenshots of posts for social media etc. when they are updated.
 It uses [PhantomJS](http://phantomjs.org/) to do this.
-
-The screenshot will look something like this when shared on social media:
 
 ![Screenshot](https://raw.githubusercontent.com/lassebunk/screenshot-generator/master/screenshot-1.png)
 
@@ -22,7 +31,6 @@ I wanted screenshots to be taken automatically, and so Screenshot Generator was 
      ```
 
      Or if this fails, [download from here](https://github.com/eugene1g/phantomjs/releases).
-
    * **Linux:**
 
      ```bash
@@ -74,3 +82,7 @@ Contributions are very welcome as I'm not very experienced in developing
 WordPress plugins.
 
 Please contribute! :blush:
+
+## Changelog
+
+* **0.1.0**: Initial release.

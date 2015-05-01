@@ -6,7 +6,7 @@
  * Version: 0.0.1
  * Author: Lasse Bunk
  * Author URI: https://github.com/lassebunk
- * License: MIT
+ * License: GPLv2 or later
  */
 
 function scrgen_defaults() {
