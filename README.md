@@ -71,4 +71,6 @@ The screenshot functionality is adapted from Microweber's
 ## Contributing
 
 Contributions are very welcome as I'm not very experienced in developing
-WordPress plugins. Please contribute!
+WordPress plugins.
+
+Please contribute! :blush:
