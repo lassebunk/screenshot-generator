@@ -178,13 +178,13 @@ function scrgen_crop_height_render(  ) {
 function scrgen_social_strategy_render(  ) { 
   ?>
   <label>
-    <input type='radio' name='scrgen_social_strategy' <?php checked(scrgen_setting('social_strategy'), 'always'); ?> value='always'>
-    Always add screenshots for social media.
+    <input type='radio' name='scrgen_social_strategy' <?php checked(scrgen_setting('social_strategy'), 'missing'); ?> value='missing'>
+    Add screenshots for social media when no featured image is available.
   </label>
   <br />
   <label>
-    <input type='radio' name='scrgen_social_strategy' <?php checked(scrgen_setting('social_strategy'), 'missing'); ?> value='missing'>
-    Add screenshots for social media when no featured image is available.
+    <input type='radio' name='scrgen_social_strategy' <?php checked(scrgen_setting('social_strategy'), 'always'); ?> value='always'>
+    Always add screenshots for social media.
   </label>
   <br />
   <label>
