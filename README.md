@@ -40,24 +40,28 @@ I wanted screenshots to be taken automatically, and so Screenshot Generator was 
 
 4. Create a folder called `wp-content/screenshots` and grant write permissions.
 
-5. Update a post and check its `og:image` or `twitter:image:src` in the `<head>` of the HTML.
-
-   If you want to retrieve the screenshot manually, you can do so:
-
-   ```php
-   <img src="<?php echo scrgen_screenshot(); ?>" />
-   ```
+5. Update a post.
 
 ## Usage
 
 When you update a post, a screenshot is automatically taken in the background.
-After a few seconds, you can retrieve the screenshot from the post's meta key
+After a few seconds, the screenshot URL is saved to the post's meta key
 `_scrgen_screenshot`.
+
+### Screenshots on social media
 
 An `og:image` and `twitter:image:src` is automatically added to the meta tags
 when viewing the post. These are only added if the post doesn't have a
 thumbnail, in which case the plugin expects the thumbnail to be added by
 you or another plugin.
+
+### Retrieving screenshots manually
+
+If you want to retrieve the screenshot manually, you can do so inside a post:
+
+```php
+<img src="<?php echo scrgen_screenshot(); ?>" />
+```
 
 ## Credits
 
