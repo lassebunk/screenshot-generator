@@ -11,10 +11,16 @@
 
 function scrgen_generate_post_screenshot($post_id) {
   // Workaround bug: http://premium.wpmudev.org/forums/topic/snapshot-faltal-error-on-get_home_path
-  if (!function_exists('get_home_path')) require_once(dirname(__FILE__) . '/../../../wp-admin/includes/file.php');
+  if (!function_exists('get_home_path' )) require_once( dirname(__FILE__) . '/../../../wp-admin/includes/file.php' );
 
   $url = get_permalink($post_id);
   $url_segs = parse_url($url);
+
+  $phantomjs = scrgen_phantomjs();
+  if (empty($phantomjs)) {
+    error_log('The phantomjs binary was not found. Make sure it is in your PHP\'s PATH or set the PHANTOMJS constant to its path.');
+    return;
+  }
 
   $relative_path = 'wp-content/screenshots/' . $post_id . '.jpg';
   $image_path = get_home_path() . $relative_path;
@@ -62,7 +68,7 @@ function scrgen_generate_post_screenshot($post_id) {
 
   file_put_contents($job_path, $src);
 
-  $exec = PHANTOMJS . ' ' . $job_path;
+  $exec = $phantomjs . ' ' . $job_path;
   $escaped_command = escapeshellcmd($exec);
 
   exec($escaped_command);
@@ -79,6 +85,16 @@ function scrgen_queue_post_update($post_id) {
 
 function scrgen_update_post_meta($post_id, $screenshot_url) {
   update_post_meta($post_id, '_scrgen_screenshot', $screenshot_url);
+}
+
+function scrgen_phantomjs() {
+  $path = exec('which phantomjs');
+
+  if (!empty($path)) {
+    return $path;
+  } elseif (defined('PHANTOMJS')) {
+    return PHANTOMJS;
+  }
 }
 
 function scrgen_screenshot() {
