@@ -11,7 +11,7 @@
 
 function scrgen_generate_post_screenshot($post_id) {
   // Workaround bug: http://premium.wpmudev.org/forums/topic/snapshot-faltal-error-on-get_home_path
-  if (!function_exists('get_home_path' )) require_once( dirname(__FILE__) . '/../../../wp-admin/includes/file.php' );
+  if (!function_exists('get_home_path')) require_once(dirname(__FILE__) . '/../../../wp-admin/includes/file.php');
 
   $url = get_permalink($post_id);
   $url_segs = parse_url($url);
