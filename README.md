@@ -9,6 +9,7 @@ The screenshot will look something like this when shared on social media:
 
 *Why?* When developing [Toptrust](http://toptrust.dk), I was tired of manually adding images of posts
 when sharing on social media. This was especially true for pages that had no featured/thumbnail images.
+I wanted screenshots to be taken automatically, and so Screenshot Generator was born.
 
 ## Installation
 
