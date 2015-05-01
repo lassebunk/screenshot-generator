@@ -21,7 +21,7 @@ function scrgen_generate_post_screenshot($post_id) {
   $image_url = get_home_url() . '/' . $relative_path;
 
   $job_id = uniqid();
-  $job_path = "/tmp/{$job_id}.js"; //tempnam(sys_get_temp_dir(), 'scrgen');
+  $job_path = "/tmp/{$job_id}.js";
   $tmp_path = "/tmp/{$job_id}.jpg";
 
   $w = 1024;
