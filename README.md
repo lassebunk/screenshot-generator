@@ -28,8 +28,25 @@ I wanted screenshots to be taken automatically, and so Screenshot Generator was 
      ```bash
      $ apt-get install phantomjs fontconfig freetype*
      ```
+
 3. Make sure the `phantomjs` binary is in your PHP's `PATH`.
-4. Update a post.
+
+   If you can't modify your `PATH`, you can set the `PHANTOMJS` constant to the
+   binary's path and this will be used:
+
+   ```php
+   define('PHANTOMJS', '/usr/local/bin/phantomjs');
+   ```
+
+4. Create a folder called `wp-content/screenshots` and grant write permissions.
+
+5. Update a post and check its `og:image` or `twitter:image:src` in the `<head>` of the HTML.
+
+   If you want to retrieve the screenshot manually, you can do so:
+
+   ```php
+   <img src="<?php echo scrgen_screenshot(); ?>" />
+   ```
 
 ## Usage
 
