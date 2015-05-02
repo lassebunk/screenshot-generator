@@ -1,17 +1,26 @@
 <?php
 add_action( 'admin_menu', 'scrgen_add_admin_menu' );
-add_action( 'admin_init', 'scrgen_settings_init' );
+add_action( 'admin_action_scrgen-regenerate', 'scrgen_admin_regenerate' );
 
 
 function scrgen_add_admin_menu() {
-
   add_options_page( 'Screenshot Generator', 'Screenshot Generator', 'manage_options', 'screenshot-generator', 'scrgen_options_page' );
-
 }
 
+function scrgen_admin_regenerate() {
+  query_posts( 'post_status=publish&post_type=any&posts_per_page=-1' );
+
+  while ( have_posts() ) : the_post();
+    $id = get_the_ID();
+    scrgen_queue_post_update($id);
+  endwhile;
+
+  wp_reset_query();
+  wp_redirect( $_SERVER['HTTP_REFERER'] . '&msg=regenerating' );
+  exit();
+}
 
 function scrgen_settings_init() {
-
   register_setting( 'scrgen-settings', 'scrgen_width' );
   register_setting( 'scrgen-settings', 'scrgen_height' );
   register_setting( 'scrgen-settings', 'scrgen_enable_cropping' );
@@ -121,6 +130,14 @@ function scrgen_settings_init() {
     'scrgen-settings'
   );
 
+  // Regenerate section
+
+  add_settings_section(
+    'scrgen_regenerate_section',
+    __( 'Regenerate screenshots', 'scrgen' ),
+    'scrgen_regenerate_section',
+    'scrgen-settings'
+  );
 }
 
 
@@ -194,11 +211,9 @@ function scrgen_social_strategy_render() {
   <?php
 }
 
-
 function scrgen_social_section() {
   echo __( '<code>og:image</code> and <code>twitter:image:src</code> can be added automatically to the HTML <code>&lt;head&gt;</code>.', 'scrgen' );
 }
-
 
 function scrgen_manual_section() {
 
@@ -206,9 +221,19 @@ function scrgen_manual_section() {
 
 }
 
+function scrgen_regenerate_section() {
+  ?>
+  <p>
+    You can regenerate all screenshots if you have changed your settings, your site layout, or if you are using the plugin for the first time.
+  </p>
+  <p>
+    <a href="<?php echo admin_url( 'admin.php'); ?>?action=scrgen-regenerate" onclick="return confirm('Are you sure you want to regenerate all screenshots?');">Regenerate all screenshots</a> <em>(you will be asked to confirm)</em>
+  </p>
+  <?php
+}
 
 function scrgen_options_page() {
-
+  scrgen_settings_init();
   ?>
   <form action='options.php' method='post'>
    
@@ -226,6 +251,13 @@ function scrgen_options_page() {
     </div>
     <?php } ?>
    
+    <?php if (isset($_REQUEST['msg']) && $_REQUEST['msg'] == 'regenerating') { ?>
+    <div style="background: #ada; color: #050; padding: 10px 15px; border: 1px solid #090; margin-right: 20px;">
+      Screenshots are now being regenerated in the background, and will be available when done.<br >
+      You are welcome to navigate away from this page.
+    </div>
+    <?php } ?>
+
     <?php
     settings_fields( 'scrgen-settings' );
     do_settings_sections( 'scrgen-settings' );
