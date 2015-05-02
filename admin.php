@@ -1,5 +1,6 @@
 <?php
 add_action( 'admin_menu', 'scrgen_add_admin_menu' );
+add_action( 'admin_init', 'scrgen_settings_init' );
 add_action( 'admin_action_scrgen-regenerate', 'scrgen_admin_regenerate' );
 
 
@@ -233,7 +234,6 @@ function scrgen_regenerate_section() {
 }
 
 function scrgen_options_page() {
-  scrgen_settings_init();
   ?>
   <form action='options.php' method='post'>
    
