@@ -110,10 +110,10 @@ function scrgen_update_post_meta($post_id, $screenshot_url) {
 function scrgen_phantomjs() {
   $path = exec('which phantomjs');
 
-  if (!empty($path)) {
-    return $path;
-  } elseif (defined('PHANTOMJS')) {
+  if (defined('PHANTOMJS')) {
     return PHANTOMJS;
+  } elseif (!empty($path)) {
+    return $path;
   }
 }
 
