@@ -244,7 +244,7 @@ function scrgen_options_page() {
       These are saved to <code>wp-content/screenshots</code>.
     </p>
 
-    <?php if (empty(scrgen_phantomjs())) { ?>
+    <?php if (scrgen_phantomjs() == false) { ?>
     <div style="background: #faa; color: #700; padding: 10px 15px; border: 1px solid #c00; margin-right: 20px;">
       The PhantomJS binary (<code>phantomjs</code>) could not be found. Screenshot Generator uses PhantomJS to generate screenshots.<br />
       Please see the <a href="https://github.com/lassebunk/screenshot-generator#installation" target="_blank">installation instructions</a> for information on how to fix this.
