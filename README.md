@@ -3,7 +3,7 @@ Contributors: lassebunk
 Tags: screenshot, screendump, phantomjs, social, preview
 Requires at least: 4.0.0
 Tested up to: 4.1.1
-Stable tag: 0.1.3
+Stable tag: 0.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,9 +22,8 @@ I wanted screenshots to be taken automatically, and so Screenshot Generator was 
 
 ### Usage
 
-When you update a post, a screenshot is automatically taken in the background.
-After a few seconds, the screenshot URL is saved to the post's meta key
-`_scrgen_screenshot`.
+When you update a post or page, a screenshot is automatically taken in the background.
+After a few seconds, the screenshot URL is saved to the post's meta key `_scrgen_screenshot`.
 
 ### Screenshots on social media 
 
@@ -37,9 +36,9 @@ you or another plugin. You can change this in the plugin settings page.
 
 If you want to retrieve the screenshot manually, you can do so inside a post:
 
-```
+`
 <img src="<?php echo scrgen_screenshot(); ?>" />
-```
+`
 
 ## Installation
 
@@ -47,25 +46,25 @@ If you want to retrieve the screenshot manually, you can do so inside a post:
 2. Install PhantomJS.
    * **Mac:**
 
-     ```
+     `
      brew install phantomjs
-     ```
+     `
 
      Or if this fails, [download from here](https://github.com/eugene1g/phantomjs/releases).
    * **Linux:**
 
-     ```
+     `
      $ apt-get install phantomjs fontconfig freetype*
-     ```
+     `
 
 3. Make sure the `phantomjs` binary is in your PHP's `PATH`.
 
    If you can't modify your `PATH`, you can set the `PHANTOMJS` constant to the
    binary's path and this will be used:
 
-   ```
+   `
    define('PHANTOMJS', '/usr/local/bin/phantomjs');
-   ```
+   `
 
 4. Create a folder called `wp-content/screenshots` and grant write permissions.
 
