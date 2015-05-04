@@ -47,7 +47,7 @@ If you want to retrieve the screenshot manually, you can do so inside a post:
    * **Mac:**
 
      `
-     brew install phantomjs
+     $ brew install phantomjs
      `
 
      Or if this fails, [download from here](https://github.com/eugene1g/phantomjs/releases).
