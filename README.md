@@ -26,14 +26,14 @@ I wanted screenshots to be taken automatically, and so Screenshot Generator was 
 2. Install PhantomJS.
    * **Mac:**
 
-     ```bash
+     ```
      brew install phantomjs
      ```
 
      Or if this fails, [download from here](https://github.com/eugene1g/phantomjs/releases).
    * **Linux:**
 
-     ```bash
+     ```
      $ apt-get install phantomjs fontconfig freetype*
      ```
 
@@ -42,7 +42,7 @@ I wanted screenshots to be taken automatically, and so Screenshot Generator was 
    If you can't modify your `PATH`, you can set the `PHANTOMJS` constant to the
    binary's path and this will be used:
 
-   ```php
+   ```
    define('PHANTOMJS', '/usr/local/bin/phantomjs');
    ```
 
