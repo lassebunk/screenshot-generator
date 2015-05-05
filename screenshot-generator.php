@@ -3,7 +3,7 @@
  * Plugin Name: Screenshot Generator
  * Plugin URI: https://github.com/lassebunk/screenshot-generator
  * Description: Take automatic screenshots of posts when they are updated.
- * Version: 0.1.6
+ * Version: 0.1.7
  * Author: Lasse Bunk
  * Author URI: https://github.com/lassebunk
  * License: GPLv2 or later
@@ -24,6 +24,10 @@ function scrgen_defaults() {
 
 function scrgen_setting($key) {
   return get_option("scrgen_{$key}", scrgen_defaults()[$key]);
+}
+
+function scrgen_plugin_basename() {
+  return plugin_basename(__FILE__);
 }
 
 function scrgen_generate_post_screenshot($post_id) {

@@ -2,7 +2,14 @@
 add_action( 'admin_menu', 'scrgen_add_admin_menu' );
 add_action( 'admin_init', 'scrgen_settings_init' );
 add_action( 'admin_action_scrgen-regenerate', 'scrgen_admin_regenerate' );
+add_filter( 'plugin_action_links_' . scrgen_plugin_basename(), 'scrgen_plugin_action_links' );
 
+function scrgen_plugin_action_links ( $links ) {
+  $mylinks = array(
+    '<a href="' . admin_url( 'options-general.php?page=screenshot-generator' ) . '">Settings</a>',
+  );
+  return array_merge( $links, $mylinks );
+}
 
 function scrgen_add_admin_menu() {
   add_options_page( 'Screenshot Generator', 'Screenshot Generator', 'manage_options', 'screenshot-generator', 'scrgen_options_page' );
