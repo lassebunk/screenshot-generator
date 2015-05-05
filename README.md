@@ -2,8 +2,8 @@
 Contributors: lassebunk
 Tags: screenshot, screendump, phantomjs, social, preview
 Requires at least: 4.0.0
-Tested up to: 4.1.1
-Stable tag: 0.1.5
+Tested up to: 4.2.1
+Stable tag: 0.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
